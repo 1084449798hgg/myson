@@ -57,8 +57,13 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'public')
     },
+    host: '0.0.0.0',
     port: 8080,
     hot: true,
-    open: false
+    open: false,
+    allowedHosts: 'all',
+    client: {
+      overlay: false
+    }
   }
 }

@@ -1,8 +1,16 @@
 <template>
   <div class="sheet-container">
     <div class="sheet-header">
-      <h1>UniverJS 表格</h1>
-      <p class="subtitle">Vue 2 + UniverJS 0.25.0 在线电子表格</p>
+      <div class="header-left">
+        <span class="back-btn" @click="goBack">
+          ← 返回
+        </span>
+      </div>
+      <div class="header-center">
+        <h1>UniverJS 表格</h1>
+        <p class="subtitle">Vue 2 + UniverJS 0.25.0 在线电子表格</p>
+      </div>
+      <div class="header-right"></div>
     </div>
     <div ref="univerContainer" class="univer-wrapper"></div>
   </div>
@@ -32,6 +40,9 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      this.$router.push('/')
+    },
     initUniver() {
       const container = this.$refs.univerContainer
 
@@ -117,21 +128,47 @@ export default {
 }
 
 .sheet-header {
-  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.header-left,
+.header-right {
+  flex: 1;
+  min-width: 80px;
+}
+
+.header-center {
+  flex: 2;
+  text-align: center;
+}
+
+.back-btn {
+  cursor: pointer;
+  font-size: 14px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 .sheet-header h1 {
   margin: 0;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
 }
 
 .subtitle {
-  margin: 8px 0 0 0;
-  font-size: 14px;
+  margin: 4px 0 0 0;
+  font-size: 13px;
   opacity: 0.9;
 }
 
